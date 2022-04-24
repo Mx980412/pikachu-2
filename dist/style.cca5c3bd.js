@@ -103,98 +103,73 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"css.js":[function(require,module,exports) {
-"use strict";
+})({"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var string = ".skin * {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n.skin *::before,.skin *::after {\n  box-sizing: border-box;\n}\n.skin {\n    background: #ffe600;\n  min-height: 50vh;\n  position: relative;\n}\n.nose {\n  border: 10px solid black;\n  border-color: black transparent transparent;\n  border-bottom: none;\n  width: 0px;\n  height: 0px;\n  position: relative;\n  left: 50%;\n  top: 105px;\n  margin-left: -10px;\n  z-index: 10;\n}\n@keyframes wave {\n  0% {\n    transform: rotate(0deg);\n  }\n  33% {\n    transform: rotate(5deg);\n  }\n  66% {\n    transform: rotate(-5deg);\n  }\n  100% {\n    transform: rotate(0deg);\n  }\n}\n.nose:hover {\n  transform-origin: center bottom;\n  animation: wave 300ms infinite linear;\n}\n.yuan {\n  position: absolute;\n  width: 20px;\n  height: 6px;\n  top: -16px;\n  left: -10px;\n  border-radius: 10px 10px 0 0;\n  background: black;\n}\n.eye {\n  border: 2px solid #000;\n  width: 64px;\n  height: 64px;\n  position: absolute;\n  left: 50%;\n  top: 60px;\n  margin-left: -32px;\n  background: #2e2e2e;\n  border-radius: 50%;\n}\n.eye::before {\n  content: \"\";\n  display: block;\n  border: 3px solid #000;\n  height: 30px;\n  width: 30px;\n  background: #fff;\n  border-radius: 50%;\n  position: relative;\n  left: 4px;\n  top: 2px;\n}\n.eye.left {\n  transform: translateX(-100px);\n}\n.eye.right {\n  transform: translateX(100px);\n}\n.mouth {\n  /* border: 1px solid red; */\n  width: 200px;\n  height: 200px;\n  position: absolute;\n  left: 50%;\n  top: 130px;\n  margin-left: -100px;\n}\n.mouth .up {\n  position: relative;\n  top: -20px;\n  z-index: 1;\n}\n.mouth .up .lip {\n  border: 3px solid black;\n  height: 30px;\n  width: 100px;\n  border-top-color: transparent;\n  border-right-color: transparent;\n  position: absolute;\n  left: 50%;\n  margin-left: -50px;\n  background: #ffe600;\n}\n.mouth .up .lip.left {\n  border-radius: 0 0 0 50px;\n  transform: rotate(-15deg) translateX(-53px);\n}\n.mouth .up .lip.right {\n  border-radius: 0 0 50px 0;\n  transform: rotate(15deg) translateX(53px);\n}\n.mouth .up .lip::before {\n  content: \"\";\n  display: block;\n  width: 7px;\n  height: 30px;\n  position: absolute;\n  bottom: 0;\n  background: #ffe600;\n}\n.mouth .up .lip.left::before {\n  right: -6px;\n}\n.mouth .up .lip.right::before {\n  left: -6px;\n}\n.mouth .down {\n  height: 180px;\n  position: absolute;\n  top: 5px;\n  width: 100%;\n  overflow: hidden;\n}\n.mouth .down .yuan1 {\n  border: 3px solid black;\n  width: 150px;\n  height: 1000px;\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -75px;\n  border-radius: 75px/300px;\n  background: #9b000a;\n  overflow: hidden;\n}\n.mouth .down .yuan1 .yuan2 {\n  height: 300px;\n  width: 200px;\n  background: #ff485f;\n  position: absolute;\n  bottom: -155px;\n  left: 50%;\n  margin-left: -100px;\n  border-radius: 100px;\n  overflow: hidden;\n}\n.face {\n  position: absolute;\n  left: 50%;\n  border: 3px solid black;\n  width: 88px;\n  height: 88px;\n  top: 160px;\n  margin-left: -44px;\n  z-index: 3;\n}\n.face > img {\n  position: absolute;\n  top: 50px;\n  left: 50%;\n}\n.face.left {\n  transform: translateX(-180px);\n  background: #ff0000;\n  border-radius: 50%;\n}\n.face.left > img {\n  transform: rotateY(180deg);\n  transform-origin: 0 0;\n}\n.face.right {\n  transform: translateX(180px);\n  background: #ff0000;\n  border-radius: 50%;\n}\n";
-exports.default = string; //导出字符串
-},{}],"test.js":[function(require,module,exports) {
-"use strict";
+  return bundleURL;
+}
 
-var _css = require("./css.js");
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
 
-var _css2 = _interopRequireDefault(_css);
+  return '/';
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
 
-//声明对象
-var player = {
-  //声明变量
-  id: undefined,
-  time: 100,
-  ui: {
-    demo: document.querySelector("#demo"),
-    demo2: document.querySelector("#demo2")
-  },
-  //事件
-  events: {
-    //暂停功能
-    "#btnPause": "pause",
-    //播放功能
-    "#btnPlay": "play",
-    //慢速功能
-    "#btnSlow": "slow",
-    //中速功能
-    "#btnNormal": "normal",
-    //快速功能
-    "#btnFast": "fast"
-  },
-  n: 1,
-  //初始化代码
-  init: function init() {
-    player.ui.demo.innerText = _css2.default.substring(0, player.n);
-    player.ui.demo2.innerHTML = _css2.default.substring(0, player.n);
-    player.bindEvents();
-    player.play();
-  },
-  //绑定函数
-  bindEvents: function bindEvents() {
-    for (var key in player.events) {
-      if (player.events.hasOwnProperty(key)) {
-        var value = player.events[key]; // pause/play/slow...这些字符串
-        document.querySelector(key).onclick = player[value];
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
     }
-  },
-  run: function run() {
-    player.n += 1;
-    if (player.n > _css2.default.length) {
-      window.clearInterval(id);
-      return;
-    }
-    player.ui.demo.innerText = _css2.default.substring(0, player.n);
-    player.ui.demo2.innerHTML = _css2.default.substring(0, player.n);
-    player.ui.demo.scrollTop = player.ui.demo.scrollHeight; //滚动条定位到内容的高度（其实还要减去滚动条本身的高度的）
-  },
-  play: function play() {
-    player.id = setInterval(player.run, player.time);
-  },
-  pause: function pause() {
-    window.clearInterval(player.id);
-  },
-  slow: function slow() {
-    player.pause();
-    player.time = 300;
-    player.play();
-  },
-  normal: function normal() {
-    player.pause();
-    player.time = 100;
-    player.play();
-  },
-  fast: function fast() {
-    player.pause();
-    player.time = 0;
-    player.play();
-  }
-};
 
-//对象初始化
-player.init();
-},{"./css.js":"css.js"}],"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\bundle-url.js"}],"style.css":[function(require,module,exports) {
+
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\css-loader.js"}],"C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -364,5 +339,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js","test.js"], null)
-//# sourceMappingURL=/test.61a66365.map
+},{}]},{},["C:\\Users\\Mx\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js"], null)
